@@ -90,16 +90,16 @@ while True:
             risk = input("What is your risk tolerance for this stock, please enter LOW, MEDIUM or HIGH: ")
             if risk == "LOW" and float(latest_close) >= 1.2 * float(recent_low) and float(latest_close) > avg_52_week :
                 recc = "BUY"
-                reccomendation_reason = "The stock's latest close price was 1.2 times higher than the lowest price in the past 100 days. Also, the latest close price was greater than the average close price over the past 52 weeks. Therefore, " , symbol , "the stock seems profitable and our reccomendation is to buy it."
+                reccomendation_reason = "The stock's latest close price was 1.2 times higher than the lowest price in the past 100 days. Also, the latest close price was greater than the average close price over the past 52 weeks. Therefore, this stock seems profitable and our reccommendation is to buy it."
             elif risk == "MEDIUM" and float(latest_close) >= 1.12 * float(recent_low) and float(latest_close) > avg_52_week :
                 recc = "BUY"
-                reccomendation_reason = "The stock's latest close price was 1.12 times higher than the lowest price in the past 100 days. Also, the latest close price was greater than the average close price over the past 52 weeks. Therefore, " , symbol , "stock seems profitable and our reccomendation is to buy it." 
+                reccomendation_reason = "The stock's latest close price was 1.12 times higher than the lowest price in the past 100 days. Also, the latest close price was greater than the average close price over the past 52 weeks. Therefore, this stock seems profitable and our reccomemndation is to buy it." 
             elif risk == "HIGH" and  float(latest_close) >= 1.07 * float(recent_low) and float(latest_close) > avg_52_week :
                 recc = "BUY"
-                reccomendation_reason = "The stock's latest close price was 1.07 times higher than the lowest price in the past 100 days. Also, the latest close price was greater than the average close price over the past 52 weeks. Therefore, " , symbol , "stock seems profitable and our reccomendation is to buy it."
+                reccomendation_reason = "The stock's latest close price was 1.07 times higher than the lowest price in the past 100 days. Also, the latest close price was greater than the average close price over the past 52 weeks. Therefore, this stock seems profitable and our reccommendation is to buy it."
             else:
                 recc = "DON'T BUY"
-                reccomendation_reason = "This stock has not shown signfnicant growth potential and the market seems to be quite volatile. Therefore, we advise not buy " , symbol ,  "stock at this time."
+                reccomendation_reason = "This stock has not shown signfnicant growth potential and the market seems to be quite volatile. Therefore, we advise not to buy this stock at this time."
         
             
             file_name = "prices_" + symbol 
@@ -160,7 +160,6 @@ while True:
         print("Error - expecting a properly formed stock symbol like MSFT. Please try again")
 
 #todo = add to the read me 
-#justification 
 
 
 
