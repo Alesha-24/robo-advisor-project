@@ -1,3 +1,6 @@
+# ignore secret environment variable values in the ".env" file:
+.env
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -130,5 +133,3 @@ dmypy.json
 
 # .gitignore
 
-# ignore secret environment variable values in the ".env" file:
-.env
