@@ -36,7 +36,7 @@ The second form of output will be a CSV file that has record historical stock da
 
 The third form of output will be a line graph that displays the trend in your chosen stock's closing price over the last 100 days. 
 
-## Set Up
+## Project Set Up
 Use GitHub.com to first fork and then download or 'clone' the project repository onto your computer.  It is helpful to choose an easily accessible download location like the Desktop.  
 
 
@@ -45,18 +45,31 @@ After cloning the repository you can then use GitHub Desktop Software to access 
 ```sh
  cd ~/Desktop/robo-adivsor/app
 ```
+### AlphaVantage API 
+In order to successfully analyse real time stock information the program will need an API Key in order to request data from AlphaVantage. You can obtain a key by visitng the link below: 
+https://www.alphavantage.co/support/#api-key.
+
+Once you have done this, please create a .env file in the project repository. Then enter the AlphaVantage Key as an environment variable as below. 
+
+```sh
+ALPHAVANTAGE_API_KEY="abc123"
+```
 
 ## Environment Set Up
 
 Create and activate a new Anaconda virtual environment:
 
 ```sh
-conda create -n shopping-env python=3.7 # (first time only)
-conda activate shopping-env
+conda create -n stocks-env python=3.7 # (first time only)
+conda activate stocks-env
+```
+From within the virtual environment install the required packages specfied in the requirements.txt file in the repository using the code below. 
+```sh
+pip install -r requirements.txt
 ```
 
-From within this virtual environment, you can run the Python script from the command-line:
+From within this virtual environment, you can then run the Python script from the command-line:
 
 ```sh
-python shopping_cart.py
+python robo_advisor.py
 ```

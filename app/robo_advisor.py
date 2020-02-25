@@ -38,6 +38,7 @@ while True:
         request_url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&outputsize=compact&apikey={API_KEY}"
         request_52 = f"https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol={symbol}&apikey={API_KEY}"
         response = requests.get(request_url)
+        print(response.text)
         response_52 = requests.get(request_52)
         if "Error Message" in response.text:
             print("ERROR! That is an invalid ticker!")
