@@ -1,4 +1,4 @@
 requests
 python-dotenv
-
+pytest 
 #if the program requires the user to install packages for the program to run then it's helpful to put that code here and in the README
