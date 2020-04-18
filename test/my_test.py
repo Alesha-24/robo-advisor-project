@@ -43,24 +43,24 @@ def test_calculate_recent_low():
     dates = list(tsd.keys())
     assert calculate_recent_low(tsd,dates) == "162.3000"
 
-def test_write_to_csv():
-    csv_filepath = os.path.join(os.path.dirname(__file__), "example_reports", "temp_prices.csv")
-    tsd = {'2020-04-17': {'1. open': '179.5000', '2. high': '180.0000', '3. low': '175.8700', '4. close': '178.6000', '5. volume': '52273542'},
-           '2020-04-16': {'1. open': '174.3000', '2. high': '177.2800', '3. low': '172.9000', '4. close': '177.0400', '5. volume': '50479610'}, 
-           '2020-04-15': {'1. open': '171.2000', '2. high': '173.5700', '3. low': '169.2400', '4. close': '171.8800', '5. volume': '40940833'}, 
-           '2020-04-14': {'1. open': '169.0000', '2. high': '173.7500', '3. low': '168.0000', '4. close': '173.7000', '5. volume': '52874338'}, 
-           '2020-04-13': {'1. open': '164.3500', '2. high': '165.5700', '3. low': '162.3000', '4. close': '165.5100', '5. volume': '41905264'}, 
-           '2020-04-09': {'1. open': '166.3600', '2. high': '167.3700', '3. low': '163.3300', '4. close': '165.1400', '5. volume': '51431775'}
-           }
-    dates = ['2020-04-17', '2020-04-16', '2020-04-15', '2020-04-14', '2020-04-13', '2020-04-09', '2020-04-08', '2020-04-07']
-    if os.path.isfile(csv_filepath):
-        os.remove(csv_filepath)
-    assert os.path.isfile(csv_filepath) == False # just making sure the test was setup properly
-    # INVOCATION
-    result = write_to_csv(tsd, csv_filepath, dates)
-    # EXPECTATIONS
-    assert result == True
-    assert os.path.isfile(csv_filepath) == True
+# def test_write_to_csv():
+#     csv_filepath = os.path.join(os.path.dirname(__file__), "example_reports", "temp_prices.csv")
+#     tsd = {'2020-04-17': {'1. open': '179.5000', '2. high': '180.0000', '3. low': '175.8700', '4. close': '178.6000', '5. volume': '52273542'},
+#            '2020-04-16': {'1. open': '174.3000', '2. high': '177.2800', '3. low': '172.9000', '4. close': '177.0400', '5. volume': '50479610'}, 
+#            '2020-04-15': {'1. open': '171.2000', '2. high': '173.5700', '3. low': '169.2400', '4. close': '171.8800', '5. volume': '40940833'}, 
+#            '2020-04-14': {'1. open': '169.0000', '2. high': '173.7500', '3. low': '168.0000', '4. close': '173.7000', '5. volume': '52874338'}, 
+#            '2020-04-13': {'1. open': '164.3500', '2. high': '165.5700', '3. low': '162.3000', '4. close': '165.5100', '5. volume': '41905264'}, 
+#            '2020-04-09': {'1. open': '166.3600', '2. high': '167.3700', '3. low': '163.3300', '4. close': '165.1400', '5. volume': '51431775'}
+#            }
+#     dates = ['2020-04-17', '2020-04-16', '2020-04-15', '2020-04-14', '2020-04-13', '2020-04-09', '2020-04-08', '2020-04-07']
+#     if os.path.isfile(csv_filepath):
+#         os.remove(csv_filepath)
+#     assert os.path.isfile(csv_filepath) == False # just making sure the test was setup properly
+#     # INVOCATION
+#     result = write_to_csv(tsd, csv_filepath, dates)
+#     # EXPECTATIONS
+#     assert result == True
+#     assert os.path.isfile(csv_filepath) == True
 
 def test_risk_calc():
     #ensuring that the function is calculating risk level appropriately
