@@ -13,18 +13,32 @@ from datetime import datetime
 
 API_KEY = os.getenv("ALPHAVANTAGE_API_KEY", default = "DEMO")
 def get_response1(symbol):
+    """
+    Obtains data from a URL and uses the json library to transform the response text into a dictionary
+    The function then returns both the raw data and the transformed data
+    """
     request_url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&outputsize=compact&apikey={API_KEY}"
     response = requests.get(request_url)
     parsed_response = json.loads(response.text)
     return response, parsed_response
 
 def get_response2(symbol):
+    """
+    Obtains data from a URL and uses the json library to transform the response text into a dictionary
+    The function then returns both the raw data and the transformed data
+
+    """
     request_52 = f"https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol={symbol}&apikey={API_KEY}"
     response_52 = requests.get(request_52)
     parsed_response_52 = json.loads(response_52.text)
     return parsed_response_52
 
 def calculate_recent_high(tsd,dates):
+    """
+    Identifies the stock's high price for each ofthe past 100 days
+    Adds all of these high prices to a list and then identifies the maximum stock price over the past 100 days
+    
+    """
     high_prices = []
     for date in dates:
         high_price = tsd[date]["2. high"]
@@ -33,6 +47,11 @@ def calculate_recent_high(tsd,dates):
     return recent_high
 
 def calculate_recent_low(tsd, dates):
+    """
+    Identifies the stock's low price for each of the past 100 days
+    Adds all of these low prices to a list and then identifies the minimum stock price over the past 100 days
+
+    """
     low_prices = []
     for  date in dates:
         low_price = tsd[date]["3. low"]
@@ -41,6 +60,9 @@ def calculate_recent_low(tsd, dates):
     return recent_low
 
 def write_to_csv(tsd, csv_file_path, dates):
+    """
+    This function writes the stock trading data to a CSV file 
+    """
     csv_headers = ["timestamp", "open", "high", "low", "close", "volume"]
     with open(csv_file_path, "w") as csv_file: # "w" means "open the file for writing"
         writer = csv.DictWriter(csv_file, fieldnames=csv_headers)
@@ -57,6 +79,11 @@ def write_to_csv(tsd, csv_file_path, dates):
     return True 
 
 def risk_calc(recent_low, latest_close, avg_52_week, risk):
+    """
+    The parameters for this function are the user's risk tolerance level, the recent low stock price, the latest close stock price and the average stock price over the past 52 weeks
+    The function uses these parameters to determine a BUY or DON'T BUY reccomendation for the user to buy given their risk tolerance
+    The calculations vary buy risk tolerance such that the more risk averse the user, the greater the required stock return need for a buy reccomendation
+    """
     if risk == "LOW" and float(latest_close) >= 1.2 * float(recent_low) and float(latest_close) > avg_52_week :
         recc = "BUY"
     elif risk == "MEDIUM" and float(latest_close) >= 1.12 * float(recent_low) and float(latest_close) > avg_52_week :
@@ -68,6 +95,9 @@ def risk_calc(recent_low, latest_close, avg_52_week, risk):
     return recc     
 
 def recc_reason(risk, recc):
+    """
+    This function uses the user's risk tolerance to provide justification for the BUY or DON'T BUY reccomendation 
+    """
     if risk == "LOW" and recc == "BUY": 
         reccomendation_reason = "The stock's latest close price was 1.20 times higher than the lowest price in the past 100 days. Also, the latest close price was greater than the average close price over the past 52 weeks. Therefore, this stock seems profitable and our reccommendation is to buy it."
     elif risk == "MEDIUM" and recc == "BUY": 
