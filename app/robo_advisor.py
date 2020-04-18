@@ -174,7 +174,7 @@ if __name__ == "__main__":
                 recc = risk_calc(recent_low, risk,latest_close,avg_52_week)
                 reccomendation_reason = recc_reason(risk, recc)
     
-                file_name = "prices_" + symbol 
+                file_name = "prices__" + symbol 
                 csv_file_path = os.path.join(os.path.dirname(__file__), "..", "data", file_name + ".csv" )
                 write_to_csv(tsd, csv_file_path, dates)
                 
