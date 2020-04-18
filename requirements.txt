@@ -1,3 +1,4 @@
+plotly 
 requests
 python-dotenv
 pytest 
