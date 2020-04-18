@@ -56,7 +56,6 @@ def test_calculate_recent_low():
 #     if os.path.isfile(csv_filepath):
 #         os.remove(csv_filepath)
 #     assert os.path.isfile(csv_filepath) == False # just making sure the test was setup properly
-#     # INVOCATION
 #     result = write_to_csv(tsd, csv_filepath, dates)
 #     # EXPECTATIONS
 #     assert result == True
